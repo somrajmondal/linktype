@@ -1,0 +1,35 @@
+#nofollow=noreferrer noopener nofollow
+#dofollow= noopener
+#dofollow = noreferrer noopener
+#dofollowsponsered= noreferrer noopener sponsored
+#dofollowlink=noopener-nofollow
+
+import bs4
+import requests
+url_list=["https://indianchacha.com/bird-sanctuaries-in-karnataka/"]
+nofollow_word='nofollow'
+noopenner_word='noopener'
+total_nofollow_outbound_link=[]
+total_nopener_word=[]
+
+for url in url_list:
+    res=requests.get(url)
+    soup=bs4.BeautifulSoup(res.content,'lxml')
+    find_noopenner_word=soup.find_all(noopenner_word)
+    count_noopener_word=len(find_noopenner_word)
+    for nw in find_noopenner_word:
+         total_nopener_word.append(nw)
+    print(total_nopener_word)
+
+
+
+    # find_nofollow_word=soup.find_all(nofollow_word)
+    # count_noopener_word=len(find_noopenner_word)
+    # count_nofolllow_word=len(find_nofollow_word)
+    # for nw in find_noopenner_word:
+    #     total_nopener_word.append(nw)
+    # for nl in find_nofollow_word:
+    #     total_nofollow_outbound_link.append(nl)
+    # print('Nonpener word in webpage: {}'.format(count_noopener_word))
+
+
